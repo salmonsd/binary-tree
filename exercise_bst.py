@@ -1,4 +1,13 @@
-def is_search_tree(binary_tree):
+def print_tree(function):
+
+    def wrapper(*args, **kwargs):
+        print(args[0])
+        return function(*args, **kwargs)
+    return wrapper
+
+
+#@print_tree
+def is_search_tree(node, min=-100, max=100):
     '''
     :param binary_tree: a Node with value, left, and right attributes,
                         where left and right are None or Node
@@ -19,4 +28,10 @@ def is_search_tree(binary_tree):
 
     # TODO Implement
 
-    return True
+    if node is None:
+        return True
+    elif node.value < max and node.value > min:
+        return is_search_tree(node.left, min=min, max=node.value) and is_search_tree(node.right, min=node.value, max=max)
+    else:
+        return False
+

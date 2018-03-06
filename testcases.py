@@ -22,7 +22,7 @@ class TestTree:
 
 
 test_trees = [
-    TestTree('Linear', build([1, 2, 3, 4, 5, 6, 7])),
+    TestTree('Linear', build([x for x in range(1,8)])),
     TestTree('Sorted', build([4, 2, 6, 1, 3, 5, 7])),
     TestTree('Sort-ish', build([4, 2, 6, 1, 5, 3, 7]))
 ]
