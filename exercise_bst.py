@@ -17,6 +17,25 @@ def is_search_tree(binary_tree):
 
     '''
 
-    # TODO Implement
+    def is_bst(binary_tree, min, max):
+        if binary_tree.value <= min:
+            return False
+        
+        if binary_tree.value >= max:
+            return False
 
-    return True
+        left_bst = True
+        right_bst = True
+        
+        if binary_tree.left is not None:
+            left_bst = is_bst(binary_tree.left, min, binary_tree.value)
+        
+        if binary_tree.right is not None:
+            right_bst = is_bst(binary_tree.right, binary_tree.value, max)
+
+        return left_bst and right_bst
+
+    if binary_tree is None:
+        return True
+
+    return is_bst(binary_tree, float('-inf'), float('inf'))
